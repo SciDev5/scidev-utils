@@ -1,5 +1,5 @@
 type ResFn<T> = (v:T|PromiseLike<T>)=>void;
-export default class EPromise<T> {
+export class EPromise<T> {
     private readonly res_:ResFn<T>;
     private readonly rej_:ResFn<unknown>;
     private readonly wrappedPromise:Promise<T>;

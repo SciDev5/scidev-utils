@@ -1,9 +1,9 @@
-import RangeOf from "./RangeOf";
+import { RangeOf } from "./RangeOf";
 
 export class EnsureFailError extends Error {}
 type EnAnd<T> = {readonly and:Ensure<T>};
 type EnMessage = string | { message:string, includeMust?:boolean };
-export default class Ensure<T> {
+export class Ensure<T> {
     private inverted = false;
     private constructor(
         private readonly value:T,

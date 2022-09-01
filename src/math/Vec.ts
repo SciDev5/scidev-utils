@@ -1,4 +1,4 @@
-export default class Vec {
+export class Vec {
     constructor(
         readonly x:number,
         readonly y:number,

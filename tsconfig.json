@@ -18,9 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "outDir": "./build/",
+    "outDir": "./dist/",
     "declaration": true,
-    "declarationDir": "./build-types/",
+    "declarationDir": "./dist-types/",
   },
   "include": [
     "src"

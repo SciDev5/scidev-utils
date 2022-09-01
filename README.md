@@ -1,4 +1,7 @@
-# SciDev5/util
+# SciDev5/util-h
 
-my utility package for all the things i have copied and
-pasted too many times alrea.
+**Not recommended for use in production.**
+
+My utility package for all the things I have copied and
+pasted too many times already: A mixed bag of random
+things I usually need for hobby projects.

@@ -1,4 +1,4 @@
-import useWindowEvent from "./useWindowEvent";
+import { useWindowEvent } from "./useWindowEvent";
 
 export class Keybind {
     shiftKey = false;
@@ -48,7 +48,7 @@ export class Keybind {
     }
 }
 
-export default function useKeybind(binding:Keybind,handler:()=>void) {
+export function useKeybind(binding:Keybind,handler:()=>void) {
     useWindowEvent("keydown",e=>{
         if (binding.check(e))
             handler();

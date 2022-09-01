@@ -23,7 +23,7 @@ class RangeConstraintEquality implements RangeConstraint{
     }
 }
 
-export default class RangeOf {
+export class RangeOf {
     private constraints:RangeConstraint[][] = [[]]; // or-ed group of and-ed groups of constraints
     private nextOpIsOr = false;
 

@@ -1,0 +1,1 @@
+export type PropertiesOf<T> = T[keyof T];

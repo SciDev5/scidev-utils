@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useWindowEvent<Ev extends keyof WindowEventMap>(evName:Ev,handler:((e:WindowEventMap[Ev])=>void)|null) {
+export function useWindowEvent<Ev extends keyof WindowEventMap>(evName:Ev,handler:((e:WindowEventMap[Ev])=>void)|null) {
     useEffect(()=>{
         if (handler === null) return;
         addEventListener(evName,handler);
