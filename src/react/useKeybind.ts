@@ -57,9 +57,17 @@ export class Keybind {
     }
 }
 
-export function useKeybind(binding:Keybind,handler:()=>void,deps:React.DependencyList=[]) {
+export function useKeybind(binding:Keybind|Keybind[],handler:()=>void,deps:React.DependencyList=[]) {
     useWindowEvent("keydown",e=>{
-        if (binding.check(e))
+        if (binding instanceof Array ?
+            binding.some(v=>v.check(e)) :
+            binding.check(e)
+        )
             handler();
-    },[binding.toString(),...deps]);
+    },[
+        binding instanceof Array ?
+            binding.map(v=>v.toString()).sort().join("") :
+            binding.toString(),
+        ...deps,
+    ]);
 }
