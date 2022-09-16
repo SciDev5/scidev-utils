@@ -1,3 +1,4 @@
+import React from "react";
 import { useWindowEvent } from "./useWindowEvent";
 
 export class Keybind {
@@ -46,11 +47,19 @@ export class Keybind {
                 ( !this.ctrlKey  || e.ctrlKey  )
             );
     }
+    toString() {
+        return `Keybind['${this.keyName}',${[
+            this.shiftKey?"⇧":null,
+            this.altKey?"⌥":null,
+            this.ctrlKey?"⌃":null,
+            this.metaKey?"⌘":null,
+        ].join("")}]`;
+    }
 }
 
-export function useKeybind(binding:Keybind,handler:()=>void) {
+export function useKeybind(binding:Keybind,handler:()=>void,deps:React.DependencyList=[]) {
     useWindowEvent("keydown",e=>{
         if (binding.check(e))
             handler();
-    });
+    },[binding.toString(),...deps]);
 }
