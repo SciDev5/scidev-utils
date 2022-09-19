@@ -34,7 +34,7 @@ export class ValueTarget<T> {
             return ()=>{
                 this.off(handler);
             };
-        },[handler,...deps]);
+        },[...deps]);
     }
     useState() {
         const [value,setValue] = useState(this.value);
