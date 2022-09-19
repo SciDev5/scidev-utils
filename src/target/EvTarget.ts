@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+
 export type EvMap = {[evName:string]:unknown};
 export type EvHandler<T> = (data:T)=>void;
 type EvHandlerMap<T extends EvMap> = {[ev in keyof T]?:Set<EvHandler<T[ev]>>};
@@ -36,5 +38,14 @@ export class EvTarget<T extends EvMap> {
             this.handlers[evName]?.delete(handler);
             this.onceHandlers[evName]?.delete(handler);
         }
+    }
+
+    useHandler<K extends keyof T>(evName:K,handler:EvHandler<T[K]>,deps:React.DependencyList=[]) {
+        useEffect(()=>{
+            this.on(evName,handler);
+            return ()=>{
+                this.off(evName,handler);
+            };
+        },[evName,...deps]);
     }
 }

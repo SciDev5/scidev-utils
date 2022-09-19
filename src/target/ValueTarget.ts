@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const targetDispatch = Symbol(), sourceValue = Symbol();
 
@@ -28,13 +28,13 @@ export class ValueTarget<T> {
         return this.off.bind(this,handler);
     }
 
-    useHandler(handler:Handler<T>) {
+    useHandler(handler:Handler<T>,deps:React.DependencyList=[]) {
         useEffect(()=>{
             this.on(handler);
             return ()=>{
                 this.off(handler);
             };
-        },[handler]);
+        },[handler,...deps]);
     }
     useState() {
         const [value,setValue] = useState(this.value);
